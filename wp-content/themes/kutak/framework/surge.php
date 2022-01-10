@@ -106,6 +106,13 @@ if ( ! function_exists( 'image_url' ) ) {
 	}
 }
 
+if ( ! function_exists( ' get_current_year' ) ) {
+	function get_current_year() {
+		return date( 'Y' );
+	}
+}
+
+
 /**
  * Remove yoast plugin canonical link from single
  *
