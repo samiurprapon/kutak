@@ -9,7 +9,7 @@
     "extends @wordpress/browserslist-config"
   ],
   "scripts": {
-    "dev": "webpack serve --node-env development",
+    "dev": "webpack serve --node-env development --watch",
     "prod": "webpack --node-env production",
     "build": "webpack --node-env development",
     "clean": "rimraf ./assets/*", 

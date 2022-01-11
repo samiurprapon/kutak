@@ -23,13 +23,13 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const devMode = process.env.NODE_ENV !== "production";
 
 module.exports = {
-  target: "web",
   mode: devMode ? "development" : "production",
   entry: [
     path.resolve(__dirname, "src/index.js"),
     path.resolve(__dirname, "src/scss/main.scss"),
   ],
-  devtool: false,
+  devtool: devMode ? "eval" : "",
+  target: "web",
   output: {
     path: path.resolve(__dirname, "assets"),
     assetModuleFilename: "images/[name][ext]",
@@ -125,17 +125,15 @@ module.exports = {
      * @ref: https://webpack.js.org/configuration/dev-server/#devserver
      */
     open: devMode ? true : false, // open browser in a new tab
+    // disable hot module replacement
+    hot: false,
     liveReload: true, // enable live reload
-    client: {
-      logging: devMode ? "verbose" : "none",
-      reconnect: false, // don't reconnect when disconnected
-    },
     proxy: {
       "*": {
         target: "http://localhost:8080",
       },
     },
     port: "8081",
-    static: [path.resolve(__dirname, "src"), path.resolve(__dirname, "assets")],
+    static: path.join(__dirname, "assets"),
   },
 };
