@@ -10,6 +10,7 @@ footer {
 
   .social-icons {
     display: flex;
+		flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     transition: color 0.3s ease;
@@ -31,6 +32,7 @@ footer {
 
   ul {
     display: flex;
+		flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     list-style: none;
@@ -62,6 +64,6 @@ footer {
     text-align: center;
     font-family: $font-source-sans-pro;
     font-size: 0.875rem;
-    color: $boulderr-grey;
+    color: $boulder-grey;
   }
 }

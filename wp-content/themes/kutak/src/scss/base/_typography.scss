@@ -5,8 +5,7 @@
 */
 
 // import Source Sans Pro from google fonts
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap");
 
 /*
 |------------------------------------------------------------------|
@@ -14,4 +13,28 @@
 |------------------------------------------------------------------|
 */
 
-$font-source-sans-pro: 'Source Sans Pro', sans-serif;
+$font-source-sans-pro: "Source Sans Pro", sans-serif;
+
+/*
+|------------------------------------------------------------------|
+|                          Theme fonts                             |
+|------------------------------------------------------------------|
+*/
+
+$primary-font: $font-source-sans-pro;
+
+/*
+|------------------------------------------------------------------|
+|                            Text styles                           |
+|------------------------------------------------------------------|
+*/
+
+.load-more-text {
+  font-family: $primary-font;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  letter-spacing: 0.025rem;
+  color: $eel-black;
+}
