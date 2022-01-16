@@ -1,12 +1,10 @@
 footer {
-  background-color: $white-smoke;
   padding: 1rem 0;
 }
 
 .footer-social {
   margin-bottom: 1rem;
   padding: 0 1.25rem 1rem 1.25rem;
-  border-bottom: 1px solid $mercury;
 
   .social-icons {
     display: flex;
@@ -66,4 +64,8 @@ footer {
     font-size: 0.875rem;
     color: $boulder-grey;
   }
+}
+
+.chin-bottom-border {
+  border-bottom: 1px solid $mercury;
 }

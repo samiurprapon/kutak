@@ -1,5 +1,5 @@
-<footer>
-	<div class="footer-social">
+<footer class="smokey-background">
+	<div class="footer-social chin-bottom-border">
 		<div class="social-icons">
 			<a href="#" target="_blank"><i class="fab fa-facebook-square"></i></a>
 			<a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -14,3 +14,5 @@
 		<p>&copy; <?php echo get_current_year(); ?> - Kutak - Wordpress Theme by Samiur Prapon</p>
 	</div>
 </footer>
+
+<?php get_template_part( 'framework/foot' ); ?>

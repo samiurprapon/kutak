@@ -15,13 +15,6 @@
 
 $font-source-sans-pro: "Source Sans Pro", sans-serif;
 
-/*
-|------------------------------------------------------------------|
-|                          Theme fonts                             |
-|------------------------------------------------------------------|
-*/
-
-$primary-font: $font-source-sans-pro;
 
 /*
 |------------------------------------------------------------------|
@@ -30,7 +23,7 @@ $primary-font: $font-source-sans-pro;
 */
 
 .load-more-text {
-  font-family: $primary-font;
+  font-family: $font-source-sans-pro;
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.5;

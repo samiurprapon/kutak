@@ -1,0 +1,199 @@
+.header-background {
+  height: 100%;
+}
+
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  align-items: center;
+  box-shadow: 0px 5px 100px rgba(0, 0, 0, 0.1);
+
+  .row {
+    justify-content: center;
+  }
+
+  ul {
+    min-height: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+
+    li {
+      cursor: pointer;
+
+      &:first-child {
+        .nav-menu-bar {
+          display: flex;
+          position: relative;
+          height: 20px;
+          width: 25px;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+
+          // hamburger menu top line
+          &::before {
+            content: "";
+            position: absolute;
+            height: 0.125rem;
+            width: 100%;
+            display: inline-block;
+            background-color: $ironside-grey;
+            top: 0;
+            left: 0;
+            transition: 0.35s ease;
+          }
+
+          i {
+            display: inline-block;
+            height: 0.125rem;
+            width: 75%;
+            background-color: $ironside-grey;
+            transition: 0.35s ease;
+          }
+          // hamburger menu bottom line
+          &::after {
+            content: "";
+            height: 0.125rem;
+            width: 50%;
+            background-color: $ironside-grey;
+            display: inline-block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transition: 0.35s ease;
+          }
+        }
+
+        &.active .nav-menu-bar {
+          &::before {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            transition: 0.35s ease;
+          }
+          i {
+            opacity: 0;
+            transform: translateX(-50%);
+          }
+          &::after {
+            width: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            transition: 0.35s ease;
+          }
+        }
+      }
+
+      &:nth-child(2) {
+        img {
+          height: 3.125rem;
+        }
+      }
+
+      &:last-child {
+        font-size: 1.25rem;
+        color: $ironside-grey;
+      }
+    }
+  }
+
+  .search-section {
+    display: none;
+    margin: 0.25rem 0;
+    overflow: hidden;
+    background-color: white;
+    animation: show 0.5s ease-in-out forwards;
+    .search-form {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      border: none;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+
+      input {
+        flex-grow: 1;
+        font-size: 1.125rem;
+        padding: 0.5rem;
+        border: none;
+      }
+
+      button {
+        background-color: transparent;
+        border: none;
+
+        span {
+          font-size: 1.125rem;
+          color: rgba(0, 0, 0, 0.3);
+        }
+      }
+    }
+  }
+
+  .nav-expand-section {
+    display: none;
+    background-color: white;
+    animation: show 0.15s ease-in-out;
+
+    .categories-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+    }
+  }
+}
+.hamburger-active {
+  .nav-expand-section {
+    display: flex;
+    justify-content: center;
+  }
+}
+.search-active {
+  .search-section {
+    display: block;
+    width: 100%;
+  }
+}
+
+.card {
+  display: flex;
+  padding: 0.25rem;
+  min-height: 148px;
+  width: 100%;
+  background-clip: inherit;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(https://demo.apalodi.com/kutak/wp-content/uploads/sites/3/2018/10/frankie-valentine-469917-unsplash-500x350.jpg);
+  border-radius: 0.5rem;
+  transition: show 0.5s ease;
+
+  a {
+    align-self: flex-end;
+    margin-top: auto;
+    height: 100%;
+    padding: 0.5rem;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 1.125rem;
+    color: white;
+    font-family: $font-source-sans-pro;
+    font-weight: 700;
+  }
+}
+
+@keyframes show {
+  from {
+    max-height: 0;
+  }
+  to {
+    max-height: 100vh;
+  }
+}
