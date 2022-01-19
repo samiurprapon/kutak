@@ -1,7 +1,23 @@
 <?php get_template_part('framework/head'); ?>
 
+<?php
+  // chech this page is home page or not
+  $is_home = is_home();
+
+  // check this page is category page or not
+  $is_category = is_category();
+
+  // check this page is single post or not
+  $is_single = is_single();
+
+?>
+
 <header>
-  <div class="header-background p-xs-1 smokey-background">
+  <?php if( is_home() || is_category() || is_single() ){  ?>
+    <div class="header-background p-xs-1 smokey-background">
+  <?php } else{ ?>
+    <div class="header-background p-xs-1 white-background">
+  <?php } ?>
     <nav class="nav">
       <div class="container">
         <div class="row">
@@ -10,7 +26,9 @@
               <span class="nav-menu-bar"><i></i></span>
             </li>
             <li>
-              <img src="https://demo.apalodi.com/kutak/wp-content/themes/kutak/assets/img/logo.png"/>
+              <a href="<?php echo get_home_url(); ?>">
+                <img src="https://demo.apalodi.com/kutak/wp-content/themes/kutak/assets/img/logo.png"/>
+              </a>
             </li>
             <li id="search-button">
               <span class="fas fa-search"></span>
