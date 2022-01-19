@@ -16,7 +16,10 @@ wp_localize_script( 'bundle', 'surge', [
 	'ajax_url'                     => is_production() ? admin_url( 'admin-ajax.php' ) : '/wp-admin/admin-ajax.php',
 
 	// home page load more ajax
-	'latest_load_more_nonce'      => wp_create_nonce( 'latest_load_more_nonce' )
+	'latest_load_more_nonce'      => wp_create_nonce( 'latest_load_more_nonce' ),
+
+	// category page load more ajax
+	'archive_load_more_nonce'      => wp_create_nonce( 'archive_load_more_nonce' ),
 
 ] );
 
@@ -35,6 +38,7 @@ function surge_archive_load_more() {
 	$current_term = $_REQUEST['current_term'];
 	$offset = $_REQUEST['offset'];
 	$search = $_REQUEST['search'];
+	$category_id = $_REQUEST['category'];
 
 
 	if ( ( ! $current_type && ! $current_term ) || ( $current_type == $type ) && $type !== 'tag' ) {
@@ -116,6 +120,15 @@ function surge_archive_load_more() {
 		'posts_per_page' => $num_of_posts,
 		'post_status'    => 'publish',
 	] );
+
+	if ( empty( $args ) ) {
+		$args = [
+			'post_status'    => 'publish',
+			'cat'			 => $category_id,
+			'posts_per_page' => $num_of_posts,
+			'offset'         => $offset,
+		];
+	}
 	
 	//posts query
 	$posts = new WP_Query( $args );

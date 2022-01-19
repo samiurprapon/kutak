@@ -1,5 +1,18 @@
-<?php get_template_part( 'framework/head' ); ?>
-<?php get_template_part( 'header' ); ?>
+<?php get_header(); ?>
+
+<?php
+	$current_category = get_queried_object();
+	$offset = 6;
+
+	$args = array(
+		'posts_per_page' => $offset,
+		'cat' => $current_category->term_id,
+		'post_status' => 'publish'
+	);
+	
+	$articles = new WP_Query( $args );
+  $total  = $articles->found_posts;
+?>
 
 <main>
 	<div class="title-container">
@@ -12,17 +25,14 @@
 								<span><i class="fas fa-circle-notch"></i>CATEGORY</span>
 							</div>
 							<h1 class="category-title-text">
-								<?php 
-									$category = get_queried_object(); 
-									echo get_cat_name( $category->term_id);							
-								?>
+								<?php echo $current_category->name; ?>
 							</h1>
 							<div class="category-description">
-								<?php echo category_description( $category->term_id ); ?>
+								<p><?php echo $current_category->description; ?></p>
 							</div>
 						</div>
 						<div class="article-count">
-							<span class="number-count"><?php echo $category->count ?></span>
+							<span class="number-count"><?php echo $total; ?></span>
 							<span class="article-placeholder">Articles</span>
 						</div>						
 					</div>
@@ -32,43 +42,28 @@
 	</div>
 
 	<div class="post-cards-container">
-		<div class="related-posts-container">
+		<div id="posts" class="related-posts-container" data-offset="<?php echo $offset; ?>" data-total="<?php echo $total; ?>" data-category="<?php echo $current_category->term_id; ?>">
 			<div class="container">
-				<div class="row">
-					<div class="related-posts">
-						<?php 
-							//  get latest posts
-							$latest_articles_number = 9;
-
-							$args = array(
-								'posts_per_page' => $latest_articles_number,
-								'offset' => 6,
-								'category' => $category->term_id,
-								'post_status' => 'publish',
-								'orderby' => 'rand'
-							);
-								
-							$latest_articles = new WP_Query( $args );
-
-							if ( $latest_articles->have_posts() ){ 
-								while ( $latest_articles->have_posts() ) { 
-									$latest_articles->the_post();
-									get_template_part( 'template-parts/post-card' );
-								}
-							} else{
-								echo '<p>No articles found</p>';
-							}
-						?>
-					</div>
+				<div id="allPosts" class="row">
+					<?php if ( $articles->have_posts() ): ?>
+						<?php while ( $articles->have_posts() ): $articles->the_post(); ?>
+							<div class="col-md-4">
+								<?php get_template_part( 'modules/article-card' ); ?>
+							</div>
+						<?php endwhile; ?>
+					<?php endif;?>
+					
 				</div>
 			</div>
 		</div>
-		<div class="load-more-container">
-
-		</div>
+        <?php if ( $total > $offset)  { ?>
+			<div class="load-more-container">
+				<div class="text-center">
+					<button id="archive-load-more" class="load-more-button load-more-text">Load More <span class="load"></span></button>
+	      </div>
+			</div>
+		<?php } ?>
 	</div>
-
 </main>
 
-<?php get_template_part( 'footer' ); ?>
-<?php get_template_part( 'framework/foot' ); ?>
+<?php get_footer(); ?>
