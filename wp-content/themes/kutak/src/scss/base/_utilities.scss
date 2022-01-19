@@ -1,23 +1,44 @@
 .no-padding {
-    padding: 0;
+  padding: 0;
 }
 
 .no-margin {
-    margin: 0;
+  margin: 0;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
 
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 .white-background {
-    background-color: white;
+  background-color: white;
 }
 
 .smokey-background {
-    background-color: $white-smoke;
+  background-color: $white-smoke;
+}
+
+.link-hover-class {
+  color: $primary-color;
+  text-decoration: none;
+  font-weight: 700;
+  background-image: linear-gradient(to bottom, $mercury 0%, $mercury 100%);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: 0 1.3rem;
+  transition: all 0.2s;
+
+  &:hover {
+    background-position: 0 0;
+    background-image: linear-gradient(
+      to bottom,
+      $primary-color 0%,
+      $primary-color 100%
+    );
+    color: white;
+  }
 }

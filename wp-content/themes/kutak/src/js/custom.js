@@ -102,8 +102,7 @@ const devMode = process.env.NODE_ENV !== "production";
       display: "inline-block",
     });
 
-      let category = $("#posts").data("category");
-
+    let category = $("#posts").data("category");
 
     //data set for ajax request
     var posts = {

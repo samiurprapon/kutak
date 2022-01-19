@@ -3,10 +3,12 @@
 @import 'base/mixins';
 @import 'base/grids';
 @import 'base/typography';
-@import 'base/utilities';
 
 // theme config
 @import 'base/config';
+
+// commonly used
+@import 'base/utilities';
 
 // components
 @import 'components/navigation';
@@ -20,3 +22,4 @@
 @import 'templates/index';
 @import 'templates/archive';
 @import 'templates/contact';
+@import 'templates/about';
