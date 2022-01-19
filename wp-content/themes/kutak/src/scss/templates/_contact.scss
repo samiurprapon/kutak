@@ -1,0 +1,110 @@
+.contact-section {
+  background-color: white;
+  padding-bottom: 1.825rem;
+
+  .contact-title {
+    font-family: $primary-font;
+    font-weight: 600;
+    font-size: 2.5rem;
+    line-height: 1.1;
+    color: $dune-black;
+    margin: 2rem 0;
+  }
+
+  .contact-description {
+    font-family: $primary-font;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: $cow-black;
+    margin-bottom: 0.25rem;
+    max-width: 41.25rem;
+  }
+
+  .few-things-content {
+    max-width: 41.25rem;
+    margin: 1.5rem 1.1rem;
+
+    li {
+      font-family: $primary-font;
+      font-weight: 400;
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: $cow-black;
+      margin-bottom: 0.25rem;
+
+      &::marker {
+        color: $pastel-grey;
+        font-weight: 700;
+        font-size: 1.2rem;
+        line-height: 1.7;
+      }
+    }
+  }
+
+  .contact-form {
+    max-width: 41.25rem;
+
+    p {
+      font-family: $primary-font;
+      line-height: 1.7;
+      width: 100%;
+      margin-bottom: 1rem;
+
+      input {
+        display: inline-block;
+        vertical-align: middle;
+        padding: 0.8125rem 0.9375rem;
+        background: $primary-color;
+        border: 2px solid $primary-color;
+        border-radius: 0.25rem;
+        color: white;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        transition: all 0.3s;
+      }
+
+      label {
+        font-size: 1.125rem;
+        color: $dove-grey;
+        cursor: pointer;
+
+        span {
+          position: relative;
+          width: 100%;
+
+          input {
+            width: 100%;
+            margin: 0;
+            outline: 0;
+            z-index: 1;
+            padding: 0.8125rem 0.9375rem;
+            background-color: white;
+            border: 2px solid $soft-peach;
+          }
+
+          textarea {
+            font-family: inherit;
+            width: 100%;
+            padding: 0.8125rem 0.9375rem;
+            margin: 0;
+            outline: 0;
+            background-color: white;
+            border: 2px solid $soft-peach;
+          }
+        }
+      }
+    }
+
+    .message-info {
+      display: none;
+      font-family: $primary-font;
+      font-weight: 400;
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: $cow-black;
+      margin: 0.5rem 0;
+    }
+  }
+}
