@@ -143,7 +143,7 @@ $break-point-xl: 75rem; /* 1200px */
       @each $size-name, $size in $sizes {
         @if $side-name == blank {
           .#{$property-name}-#{$break-point}-#{$size-name} {
-            @if $property == m {
+            @if $property-name == m {
               margin: #{$size}px;
             } @else {
               padding: #{$size}px;
@@ -151,7 +151,7 @@ $break-point-xl: 75rem; /* 1200px */
           }
         } @else {
           .#{$property-name}#{$side-name}-#{$break-point}-#{$size-name} {
-            @if $property == m {
+            @if $property-name == m {
               margin-#{$side}: #{$size}px;
             } @else {
               padding-#{$side}: #{$size}px;
