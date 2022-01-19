@@ -28,11 +28,10 @@
     </a>
     <h2 class="card-title"><?php the_title(); ?></h2>
     <div class="card-excerpt"><?php the_excerpt(); ?></div>
+    <div class="post-meta">
+      <span><i class="far fa-clock"></i><?php echo read_time() ?></span>
+      <!-- ex: March 14, 2022 -->
+      <span><i class="far fa-calendar-alt"></i><?php the_time( 'F j, Y' ); ?></span> 
     </div>
-
-  <div class="post-meta">
-    <div><i class="far fa-clock"></i><?php echo read_time() ?></div>
-    <!-- ex: March 14, 2022 -->
-    <div><i class="far fa-calendar-alt"></i><?php the_time( 'F j, Y' ); ?></div> 
   </div>
 </div>
