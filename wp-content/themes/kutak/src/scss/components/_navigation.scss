@@ -147,6 +147,10 @@
       flex-wrap: wrap;
       justify-content: center;
       width: 100%;
+
+      a {
+        text-decoration: none;
+      }
     }
   }
 }
@@ -176,12 +180,11 @@
   border-radius: 0.5rem;
   transition: show 0.5s ease;
 
-  a {
+  .category-name {
     align-self: flex-end;
     margin-top: auto;
     height: 100%;
     padding: 0.5rem;
-    text-decoration: none;
     text-transform: capitalize;
     font-size: 1.125rem;
     color: white;

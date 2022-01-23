@@ -1,14 +1,11 @@
 <?php get_template_part('framework/head'); ?>
 
 <?php
-  // chech this page is home page or not
-  $is_home = is_home();
-
-  // check this page is category page or not
-  $is_category = is_category();
-
-  // check this page is single post or not
-  $is_single = is_single();
+	$categories = get_categories( array(
+	  'orderby' => 'name',
+		'order'   => 'ASC',
+		) 
+	);
 
 ?>
 
@@ -57,51 +54,17 @@
         <div class="container">
           <div class="row">
             <div class="categories-container">
-              <div class="col-xs-6 col-md-3 pb-xs-2">
-                <div class="card">
-                  <a href="#">accusantium</a>
+              <?php foreach ( $categories as $category ) { ?>
+                <div class="col-xs-6 col-md-3 pb-xs-2">
+                  <a href="<?php echo get_category_link( $category->term_id ); ?>">
+                    <div class="card">
+                      <div class="category-name">
+                        <?php echo $category->name; ?>
+                      </div>
+                    </div>
+                  </a>
                 </div>
-              </div>
-              <div class="col-xs-6 col-md-3 pb-xs-2">
-                <div class="card">
-                  <a href="#">accusantium</a>
-                </div>
-              </div>
-              <div class="col-xs-6 col-md-3 pb-xs-2">
-                <div class="card">
-                  <a href="#">accusantium</a>
-                </div>
-              </div>
-              <div class="col-xs-6 col-md-3 pb-xs-2">
-                <div class="card">
-                  <a href="#">accusantium</a>
-                </div>
-              </div>
-              <div class="col-xs-6 col-md-3 pb-xs-2">
-                <div class="card">
-                  <a href="#">accusantium</a>
-                </div>
-              </div>
-              <div class="col-xs-6 col-md-3 pb-xs-2">
-                <div class="card">
-                  <a href="#">accusantium</a>
-                </div>
-              </div>
-              <div class="col-xs-6 col-md-3 pb-xs-2">
-                <div class="card">
-                  <a href="#">accusantium</a>
-                </div>
-              </div>
-              <div class="col-xs-6 col-md-3 pb-xs-2">
-                <div class="card">
-                  <a href="#">accusantium</a>
-                </div>
-              </div>
-              <div class="col-xs-6 col-md-3 pb-xs-2">
-                <div class="card">
-                  <a href="#">accusantium</a>
-                </div>
-              </div>
+              <?php } ?>
             </div>
           </div>
           <div class="row mt-xs-4">
