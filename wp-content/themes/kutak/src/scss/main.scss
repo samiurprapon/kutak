@@ -17,10 +17,12 @@
 @import 'components/side-card';
 @import 'components/feature-card';
 
-// templates
 @import 'templates/header';
 @import 'templates/footer';
+@import 'components/sidebar';
+@import 'components/comments';
 
+// templates
 @import 'templates/index';
 @import 'templates/archive';
 @import 'templates/contact';

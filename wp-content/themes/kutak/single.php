@@ -48,10 +48,60 @@
   </div>
 </div>
 
-<main class="blog-post mb-xs-4">
-  <div class="container">
+<main class="blog-post mb-xs-8">
+  <div class="container mb-xs-6">
     <?php the_content(); ?>
   </div>
+
+  <div class="tag-container">
+
+  </div>
+  
+  <div class="author-container">
+
+  </div>
+
+  <div class="join-newsletter-container">
+
+  </div>
+
+  <div class="ads-container">
+
+  </div>
+
+  <div class="related-post-container">
+
+  </div>
+
+  <div class="comments-container pt-xs-10">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="pervious-comments">
+            <ol>
+              <?php // comments list
+                wp_list_comments( array(
+                  'style'       => 'ol',
+                  'short_ping'  => true,
+                  'avatar_size' => 74,
+                ) );
+              ?>
+            </ol>
+          </div>
+
+          <div class="comment-form">
+            <?php comment_form(); ?>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <!-- sidebar -->
+					<?php get_sidebar(); ?>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
 </main>
 
 <?php get_footer(); ?>

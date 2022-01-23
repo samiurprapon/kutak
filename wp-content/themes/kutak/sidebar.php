@@ -28,6 +28,11 @@
 	$recommended_posts = new WP_query ( $recommended_post_args );
 ?>
 
+<div class="feature-tabs">
+	<button id="feature-1" class="feature-tab is-active">Trending</button>
+	<button id="feature-2" class="feature-tab">Recommended</button>
+</div>
+
 <?php if ( $trending_posts->have_posts() ): ?>
 	<?php while ( $trending_posts->have_posts()) : $trending_posts->the_post(); ?>
 		<?php get_template_part( 'modules/side-card' ); ?>

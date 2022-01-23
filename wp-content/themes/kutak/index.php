@@ -32,10 +32,6 @@
 					<?php endif; wp_reset_query();?>
 						
 				<div class="col-md-4">
-					<div class="feature-tabs">
-						<button id="feature-1" class="feature-tab is-active">Trending</button>
-						<button id="feature-2" class="feature-tab">Recommended</button>
-					</div>
 					<?php get_sidebar(); ?>
 				</div>
 			</div>
