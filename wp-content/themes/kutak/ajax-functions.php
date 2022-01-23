@@ -21,6 +21,9 @@ wp_localize_script( 'bundle', 'surge', [
 	// category page load more ajax
 	'archive_load_more_nonce'      => wp_create_nonce( 'archive_load_more_nonce' ),
 
+	// 
+	'surge_filtered_content'    => wp_create_nonce( 'surge_filtered_content' ),
+
 ] );
 
 
@@ -317,3 +320,46 @@ function surge_archive_filter() {
 
 add_action( 'wp_ajax_ARCHIVE_FILTER_POSTS', 'surge_archive_filter' );
 add_action( 'wp_ajax_nopriv_ARCHIVE_FILTER_POSTS', 'surge_archive_filter' );
+
+/**
+ * Load content based on filter
+ */
+
+if ( ! function_exists( 'surge_ajax_filtered_content' ) ) {
+	function surge_ajax_filtered_content() {
+		//check the nonce
+		check_ajax_referer( 'surge_filtered_content', 'security' );
+
+		$category = trim( $_REQUEST['filter']['category'] );
+		$tag      = trim( $_REQUEST['filter']['tags'] );
+
+		//main condition
+		$num_of_posts = 6;
+
+		$terms = [
+			'posts_per_page' => $num_of_posts,
+			'post_status'    => 'publish'
+		];
+
+		//conditional
+		$posts = get_filtered_wp_query( $terms, $category, $tag);
+
+		//total posts
+		$total = $posts->found_posts;
+
+
+		if ( $posts->have_posts() ) { ?>
+			<?php while ( $posts->have_posts() ) : $posts->the_post() ?>
+				<div class="col-md-4 col-sm-6">
+					<?php get_template_part('modules/article-card'); ?>
+				</div><!-- ./col-md-4 col-sm-6 -->
+			<?php endwhile ?>
+		<?php }
+
+		//end the request
+		wp_die();
+	}
+
+	add_action( 'wp_ajax_SURGE_FILTERED_CONTENT', 'surge_ajax_filtered_content' );
+	add_action( 'wp_ajax_nopriv_SURGE_FILTERED_CONTENT', 'surge_ajax_filtered_content' );
+}

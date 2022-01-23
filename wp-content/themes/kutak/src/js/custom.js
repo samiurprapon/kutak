@@ -42,6 +42,85 @@ const devMode = process.env.NODE_ENV !== "production";
     $("nav").toggleClass("white-background");
   });
 
+  $("body").on("click", "#feature-1", function () {
+    // tab click
+    $("#feature-2").removeClass("is-active");
+    $("#feature-1").addClass("is-active");
+
+    // change sidebar content
+  });
+
+  $("body").on("click", "#feature-2", function () {
+    // tab click
+    $("#feature-1").removeClass("is-active");
+    $("#feature-2").addClass("is-active");
+
+    // change sidebar content
+  });
+
+  var filterFlag = true;
+  $("body").on("click", "#filter [class*=dropdown-menu-] .items", function () {
+    $("#filter ul").hide();
+
+    if (filterFlag) {
+      $(this).parent().find("ul").show();
+      filterFlag = false;
+    } else {
+      $(this).parent().find("ul").hide();
+      filterFlag = true;
+    }
+  });
+
+  $("body").on("click", "#filter [class*=dropdown-menu] ul", function () {
+    //post data object
+    let postData = {
+      action: "SURGE_FILTERED_CONTENT",
+      filter: {
+        category: $("#filter .dropdown-menu-1 .item-name").data("name"),
+        tags: $("#filter .dropdown-menu-2 .item-name").data("name"),
+      },
+      security: surge.surge_filtered_content,
+    };
+
+    //post the data to admin-ajax.php file
+    $.post(surge.ajax_url, postData, function (response) {
+      //set the filter
+      let filter =
+        "category=" +
+        $("#filter .dropdown-menu-1 .item-name").data("name") +
+        "&tag=" +
+        $("#filter .dropdown-menu-2 .item-name").data("name");
+      $("#posts").attr("data-filter", filter);
+
+      let total = $("#posts").data("total");
+      var Offset = $("#posts").data("offset");
+
+      //update the total
+      $("#filtered-articles #posts").attr("data-total", total);
+
+      //check if no content found
+      setTimeout(function () {
+        if (parseInt(total) === 0) {
+          $("#posts")
+            .append(
+              '<div class="col-md-12 text-center"><h2>Nothing found for this criteria.</h2></div>'
+            )
+            .fadeIn();
+        }
+      }, 100);
+
+      if (total) {
+        if (total < Offset) {
+          $("#latest-load-more").hide();
+        } else {
+          $("#latest-load-more").show();
+        }
+      }
+      //append new posts
+      $("#posts").html(response);
+    });
+  });
+
   $("body").on("click", "#latest-load-more", function () {
     let $this = $(this);
 
