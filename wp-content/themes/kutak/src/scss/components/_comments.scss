@@ -1,4 +1,90 @@
+.previous-comments {
+  margin-bottom: 1.25rem;
+
+  h2 {
+    font-family: $primary-font;
+    font-weight: 700;
+    font-size: 1.4375rem;
+    letter-spacing: -1px;
+    color: $primary-color;
+    margin-bottom: 1rem;
+  }
+
+  article {
+    margin-bottom: 1.25rem;
+
+    .single-comment {
+      display: flex;
+
+      .single-author-avatar {
+        min-width: 2rem;
+        max-width: 2rem;
+        min-height: 2rem;
+        max-height: 2rem;
+        margin-right: 0.5rem;
+
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 2%;
+        }
+      }
+
+      .single-comment-body {
+        position: relative;
+        width: 100%;
+        background: white;
+        border: 0.125rem solid $soft-peach;
+        border-radius: 0.125rem;
+        padding: 1rem;
+
+        .single-author-name {
+          font-family: $primary-font;
+          font-size: 1rem;
+          line-height: 1.7;
+          color: $cow-black;
+          font-weight: 700;
+        }
+
+        .single-comment-meta {
+          font-family: $primary-font;
+          font-size: 0.8125rem;
+          color: $boulder-grey;
+          line-height: 1.7;
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+        }
+
+        .single-comment-content {
+          font-family: $primary-font;
+          font-size: 1rem;
+          line-height: 1.7;
+          color: $cow-black;
+        }
+
+        .reply-link {
+          a {
+            text-decoration: none;
+            font-family: $primary-font;
+            font-size: 0.8125rem;
+            line-height: 1.7;
+            color: $boulder-grey;
+            font-weight: 600;
+            margin-top: 0.5rem;
+          }
+        }
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
 .comment-form {
+  padding-bottom: 1.25rem;
+
   label {
     font-family: $primary-font;
     font-size: 1.125rem;
@@ -13,9 +99,9 @@
     max-width: 100%;
     margin: 0;
     outline: 0;
-    border: 2px solid $soft-peach;
+    border: 0.125rem solid $soft-peach;
     line-height: 1.5;
-    border-radius: 4px;
+    border-radius: 0.25rem;
     background-color: white;
     transition: background 0.3s, color 0.3s, border 0.3s;
     background-image: -webkit-linear-gradient(
@@ -28,10 +114,29 @@
       background-color: $soft-peach;
       color: $primary-color;
     }
+
+    @media (max-width: $break-point-md) {
+      width: 100%;
+    }
+  }
+
+  .logged-in-as {
+    p {
+      font-family: $primary-font;
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: $cow-black;
+
+      &:last-child {
+        color: $primary-color;
+      }
+    }
   }
 
   .comment-reply-title {
-    margin-bottom: 0.875rem;
     font-family: $primary-font;
     font-weight: 700;
     font-size: 1.4375rem;
@@ -79,44 +184,82 @@
 
   .comment-form-author {
     margin-bottom: 1rem;
-    float: left;
-    width: 30.75%;
-    margin-right: 3.8%;
+    width: 100%;
+
+    @media screen and (min-width: $break-point-md) {
+      float: left;
+      width: 30.75%;
+      margin-right: 3.8%;
+    }
   }
 
   .comment-form-email {
     margin-bottom: 1rem;
-    float: left;
-    width: 30.75%;
-    margin-right: 2.8%;
+    width: 100%;
+
+    @media screen and (min-width: $break-point-md) {
+      float: left;
+      width: 30.75%;
+      margin-right: 3.8%;
+    }
   }
 
   .comment-form-url {
     margin-bottom: 1rem;
-    float: right;
-    width: 30.75%;
-    margin-right: 3.8%;
+    width: 100%;
+
+    @media screen and (min-width: $break-point-md) {
+      float: left;
+      width: 30.75%;
+    }
   }
 
   .comment-form-cookies-consent {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    text-align: start;
+    margin-bottom: 1.125rem;
 
-    input {
-      clear: none;
-      cursor: pointer;
-      display: inline-block;
-      line-height: 0;
-      height: 18px;
-      margin: -3px 4px 0 0;
+    input[type="checkbox"] {
+      // clear: none;
+      height: 1.125rem;
+      margin-right: 0.375rem;
+      accent-color: white;
+      border: 0.125rem solid $soft-peach;
       outline: 0;
       padding: 0;
       text-align: center;
-      width: 18px;
-      min-width: 18px;
+      width: 1.125rem;
+      min-width: 1.125rem;
+      cursor: pointer;
       appearance: none;
+
+      &:checked::before {
+        content: "\2713";
+        font-family: $primary-font;
+        color: $primary-color;
+        accent-color: white;
+        font-size: 1rem;
+        text-align: center;
+        line-height: 1;
+        text-align: center;
+      }
     }
   }
 
   .form-submit {
+    input {
+      display: inline-block;
+      vertical-align: middle;
+      background: $primary-color;
+      width: fit-content;
+      border: 2px solid $primary-color;
+      color: white;
+      font-family: $primary-font;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      padding: 0.8125rem 0.9375rem;
+      transition: all 0.3s;
+    }
   }
 }

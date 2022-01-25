@@ -49,7 +49,7 @@
 </div>
 
 <main class="blog-post mb-xs-8">
-  <div class="container mb-xs-6">
+  <div class="container mb-xs-6 main-content">
     <?php the_content(); ?>
   </div>
 
@@ -77,21 +77,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <div class="pervious-comments">
-            <ol>
-              <?php // comments list
-                wp_list_comments( array(
-                  'style'       => 'ol',
-                  'short_ping'  => true,
-                  'avatar_size' => 74,
-                ) );
-              ?>
-            </ol>
-          </div>
-
-          <div class="comment-form">
-            <?php comment_form(); ?>
-          </div>
+          <?php comments_template(); ?>
         </div>
         <div class="col-md-4">
           <!-- sidebar -->
