@@ -40,7 +40,7 @@
 
       .items {
         position: relative;
-        border: 0.125rem solid white;
+        border: 0.125rem solid $dove-grey;
         padding: 0.5rem 1rem;
         background: transparent;
         width: 100%;
@@ -51,7 +51,7 @@
 
         span {
           font-size: 1.125rem;
-          color: white;
+          color: $dove-grey;
         }
       }
 

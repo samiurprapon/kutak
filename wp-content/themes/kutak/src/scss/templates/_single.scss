@@ -325,3 +325,20 @@
     }
   }
 }
+
+.related-post-container{
+  margin-top: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+
+  h2 {
+    margin-bottom: 1rem;
+    font-family: $primary-font;
+    font-size: 1.325rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: $primary-color;
+    letter-spacing: -1px;
+
+  }
+}

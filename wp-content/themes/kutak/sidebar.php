@@ -1,9 +1,10 @@
 <?php 
 	$trending_post_args = array(
-		'posts_per_page' => 4,
+		'post_status' => 'publish',
 		'orderby' => 'publish_date',
 		'order' => 'DESC',
-		'post_status' => 'publish',
+		'posts_per_page' => 4,
+		'offset' => 0,
 		'meta_query' => array(
 			array(
 				'key' => 'post-type',
@@ -13,9 +14,10 @@
 	);
 
 	$recommended_post_args = array(
-		'posts_per_page' => 4,
-		'orderby' => 'date',
 		'post_status' => 'publish',
+		'orderby' => 'date',
+		'posts_per_page' => 4,
+		'offset' => 4,
 		'meta_query' => array(
 			array(
 				'key' => 'post-type',

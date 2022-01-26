@@ -96,8 +96,31 @@
 
   </div>
 
-  <div class="related-post-container">
+  <div class="related-post-container smokey-background">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>You might also like</h2>
+        </div>
+        <?php
+          $related_posts = new WP_Query(array(
+            'post_type' => 'post',
+            'posts_per_page' => 6,
+            'post__not_in' => array(get_the_ID()),
+            'category__in' => wp_get_post_categories(get_the_ID()),
+            'orderby' => 'rand'
+          ));
+        ?>
 
+        <?php if ($related_posts->have_posts()): ?> 
+          <?php while ($related_posts->have_posts()): $related_posts->the_post(); ?>
+            <div class="col-md-4">
+							<?php get_template_part( 'modules/side-card' ); ?>
+						</div>
+          <?php endwhile; wp_reset_query(); ?>
+				<?php endif; ?>     
+      </div>
+    </div>
   </div>
 
   <div class="comments-container pt-xs-10">
