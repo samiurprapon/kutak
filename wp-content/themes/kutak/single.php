@@ -1,14 +1,15 @@
 <?php get_header(); ?>
 
 <?php
-  //get tags list
-	$tags = get_the_tag_list();
 
   $category = get_the_category(); 
   $category_id = $category[0]->cat_ID;
 
   $category_link = get_category_link( $category_id );
   $category_name = $category[0]->name;
+
+  global $post;
+  $author_id = $post->post_author;
 ?>
 
 <div class="post-banner mb-xs-4">
@@ -50,16 +51,42 @@
 
 <main class="blog-post mb-xs-8">
   <div class="container mb-xs-6 main-content">
-    <?php the_content(); ?>
+    <div class="row">
+      <div class="col-md-12">
+        <?php the_content(); ?>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <?php $tags = get_the_tag_list(); ?>
+        <?php if ($tags) { ?>
+          <div class="tag-container">
+            <h6>Tags</h6>
+            <?php echo $tags; ?>
+          </div>
+        <?php } ?>
+      </div>
+      <div class="col-md-12">
+        <div class="author-container">
+          <div class="author-image">
+            <?php echo get_avatar( get_the_author_meta( 'ID' ), $author_id ); ?>
+          </div>
+          <div class="author-info">
+            <!-- author name -->
+            <h6 class="author-name"><?php echo get_the_author_meta("display_name", $author_id); echo $author;  ?></h6>
+            <p><?php echo get_the_author_meta('description', $author_id); ?></p>
+          </div>
+        </div>
+      </div>
+      
+      
+    </div>
   </div>
 
-  <div class="tag-container">
-
-  </div>
   
-  <div class="author-container">
 
-  </div>
 
   <div class="join-newsletter-container">
 
@@ -85,9 +112,7 @@
         </div>
       </div>
     </div>
-  
   </div>
-
 </main>
 
 <?php get_footer(); ?>
