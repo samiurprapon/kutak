@@ -8,7 +8,7 @@
 
 <div class="side-card-container">
   <div class="row">
-    <div class="col-xs-4 col-md-6">
+    <div class="col-xs-4 col-md-6 pl-xs-0">
       <div class="card-image">
         <a href="<?php the_permalink(); ?>">
           <?php if (has_post_thumbnail()) { ?>

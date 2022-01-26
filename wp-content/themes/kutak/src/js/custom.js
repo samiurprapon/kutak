@@ -47,7 +47,8 @@ const devMode = process.env.NODE_ENV !== "production";
     $("#feature-2").removeClass("is-active");
     $("#feature-1").addClass("is-active");
 
-    // change sidebar content
+    $("#recommended-posts").addClass("hide");
+    $("#trending-posts").removeClass("hide");
   });
 
   $("body").on("click", "#feature-2", function () {
@@ -55,7 +56,8 @@ const devMode = process.env.NODE_ENV !== "production";
     $("#feature-1").removeClass("is-active");
     $("#feature-2").addClass("is-active");
 
-    // change sidebar content
+    $("#trending-posts").addClass("hide");
+    $("#recommended-posts").removeClass("hide");
   });
 
   var filterFlag = true;

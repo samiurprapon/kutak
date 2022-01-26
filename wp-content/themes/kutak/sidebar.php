@@ -33,8 +33,26 @@
 	<button id="feature-2" class="feature-tab">Recommended</button>
 </div>
 
-<?php if ( $trending_posts->have_posts() ): ?>
-	<?php while ( $trending_posts->have_posts()) : $trending_posts->the_post(); ?>
-		<?php get_template_part( 'modules/side-card' ); ?>
-	<?php endwhile; wp_reset_query();?>
-<?php endif; ?>
+<div id="trending-posts" class="container pl-xs-0">
+	<div class="row">
+		<?php if ( $trending_posts->have_posts() ): ?>
+			<?php while ( $trending_posts->have_posts()) : $trending_posts->the_post(); ?>
+				<div class="col-xs-12 col-sm-6 col-md-12">
+					<?php get_template_part( 'modules/side-card' ); ?>
+				</div>
+			<?php endwhile; wp_reset_query();?>
+		<?php endif; ?>		
+	</div>
+</div>
+
+<div id="recommended-posts" class="container pl-xs-0">
+	<div class="row">
+		<?php if ( $recommended_posts->have_posts() ): ?>
+			<?php while ( $recommended_posts->have_posts()) : $recommended_posts->the_post(); ?>
+				<div class="col-xs-12 col-sm-6 col-md-12">
+					<?php get_template_part( 'modules/side-card' ); ?>
+				</div>
+			<?php endwhile; wp_reset_query();?>
+		<?php endif; ?>		
+	</div>
+</div>
