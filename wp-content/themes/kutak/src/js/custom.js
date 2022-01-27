@@ -93,6 +93,14 @@ const devMode = process.env.NODE_ENV !== "production";
     }
   });
 
+      $('body').on('click', '#filter [class*=dropdown-] ul li', function () {
+        $(this).parent().parent().find('.items .item-name').text($(this).text());
+        $(this).parent().parent().find('.items .item-name').data('name', $(this).data('name'));
+        //hide after change
+        $('#filter ul').hide();
+        filterFlag = true;
+    });
+
   $("body").on("click", "#filter [class*=dropdown-menu] ul", function () {
     //post data object
     let postData = {
@@ -132,14 +140,14 @@ const devMode = process.env.NODE_ENV !== "production";
       }, 100);
 
       if (total) {
-        if (total < Offset) {
+        if (total > Offset) {
           $("#latest-load-more").hide();
         } else {
           $("#latest-load-more").show();
         }
       }
       //append new posts
-      $("#posts").html(response);
+      $("#allPosts").html(response);
     });
   });
 

@@ -342,11 +342,9 @@ if ( ! function_exists( 'surge_ajax_filtered_content' ) ) {
 		];
 
 		//conditional
-		$posts = get_filtered_wp_query( $terms, $category, $tag);
-
+		$posts = get_filtered_wp_query( $terms, $category, $tag );
 		//total posts
 		$total = $posts->found_posts;
-
 
 		if ( $posts->have_posts() ) { ?>
 			<?php while ( $posts->have_posts() ) : $posts->the_post() ?>
@@ -362,4 +360,54 @@ if ( ! function_exists( 'surge_ajax_filtered_content' ) ) {
 
 	add_action( 'wp_ajax_SURGE_FILTERED_CONTENT', 'surge_ajax_filtered_content' );
 	add_action( 'wp_ajax_nopriv_SURGE_FILTERED_CONTENT', 'surge_ajax_filtered_content' );
+}
+
+/**
+ * Get the filtered WordPress query
+ *
+ * @param $terms
+ * @param $category
+ * @param $tag
+ *
+ * @return WP_Query
+ */
+
+if ( ! function_exists( 'get_filtered_wp_query' ) ) {
+	function get_filtered_wp_query( $terms, $category, $tag ) {
+		if ( $category && $tag) {
+			$posts = new WP_Query( array_merge( [
+				'category_name' => $category,
+				'tag__and'      => [
+					get_term_by( 'name', $tag, 'post_tag' )->term_id
+				],
+			], $terms ) );
+		} elseif ( $category && $tag ) {
+			$posts = new WP_Query( array_merge( [
+				'category_name' => $category,
+				'tag'           => $tag,
+			], $terms ) );
+		} elseif ( $category) {
+			$posts = new WP_Query( array_merge( [
+				'category_name' => $category,
+			], $terms ) );
+		} elseif ( $tag) {
+			$posts = new WP_Query( array_merge( [
+				'tag__and' => [
+					get_term_by( 'name', $tag, 'post_tag' )->term_id
+				],
+			], $terms ) );
+		} elseif ( $category ) {
+			$posts = new WP_Query( array_merge( [
+				'cat' => get_category_by_slug( $category )->term_id
+			], $terms ) );
+		} elseif ( $tag ) {
+			$posts = new WP_Query( array_merge( [
+				'tag' => $tag,
+			], $terms ) );
+		} else {
+			$posts = new WP_Query( $terms );
+		}
+
+		return $posts;
+	}
 }
