@@ -1,4 +1,4 @@
-.post-banner {
+.article-heading {
   padding: 2.25rem 0;
   background-color: #f0f0f0;
 
@@ -82,92 +82,13 @@
   }
 }
 
-.blog-post {
+.blog-post-body {
+  padding: 2rem 0;
   font-family: $primary-font;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   line-height: 1.7;
-  color: $eel-black;
+  color: $cow-black;
   background-color: white;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  hr {
-    clear: both;
-    border: 0;
-    width: 100%;
-    max-width: 7.5rem;
-    margin: 2.75rem auto;
-    height: 1px;
-    background: $goose-grey;
-  }
-
-  ol {
-    margin: 1.7rem 1rem;
-    font-family: $primary-font;
-    list-style: none;
-
-    li {
-      position: relative;
-      padding-left: 2.8125rem;
-      margin: 1rem 0;
-      font-family: $primary-font;
-      font-size: 1.25rem;
-      font-weight: 400;
-      line-height: 1.7;
-      color: $cow-black;
-      counter-increment: list;
-
-      &:before {
-        content: counter(list);
-        position: absolute;
-        top: 0.15rem;
-        left: 0;
-        width: 1.875rem;
-        height: 1.875rem;
-        border: 2px solid $mercury;
-        border-radius: 1.875rem;
-        text-align: center;
-        line-height: 26px;
-        font-family: $primary-font;
-        font-weight: 600;
-        font-size: 1.25rem;
-      }
-
-      strong {
-        font-weight: 700;
-      }
-    }
-
-    @media screen and (min-width: $break-point-md) {
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
-
-  ul {
-    max-width: 41.25rem;
-    margin: 1.5rem 1.1rem;
-
-    li {
-      font-family: $primary-font;
-      font-weight: 400;
-      font-size: 1.2rem;
-      line-height: 1.7;
-      color: $cow-black;
-      margin-bottom: 0.25rem;
-
-      &::marker {
-        color: $pastel-grey;
-        font-weight: 700;
-        font-size: 1.2rem;
-        line-height: 1.7;
-      }
-    }
-  }
 
   .has-drop-cap {
     text-indent: 0;
@@ -194,92 +115,106 @@
     }
   }
 
-  .main-content {
-    a {
-      @extend .link-hover-class;
-      padding-bottom: 0.125rem;
-    }
+  p {
+    font-family: $primary-font;
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.7;
+    @extend .max-width-container;
+    margin-bottom: 1rem;
+    color: $cow-black;
   }
-
-  figure {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .wp-block-image {
+    margin-bottom: 1rem;
+    position: relative;
 
     img {
-      border-radius: 5px;
-      max-width: 22.5rem;
-      max-height: 16.125rem;
-      width: auto;
+      width: 100%;
+      height: auto;
       object-fit: cover;
-      background-size: cover;
-      background-position: center center;
-      z-index: 2;
     }
-  }
-  blockquote {
-    margin: 1.7rem 1rem;
-    border: 0.625rem solid $white-smoke;
-    font-size: 1.3em;
-    font-weight: bold;
-    line-height: 1.5;
-    color: #d93f7e;
-    padding: 1.5rem 1.2rem;
-    z-index: 1;
-
-    p {
+    figcaption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-left: 0.5rem;
+      margin-bottom: 0.9rem;
       font-family: $primary-font;
-      font-size: 1.625rem;
-      line-height: 1.5;
-      font-weight: 700;
-      color: $primary-color;
-      margin-bottom: 1.25rem;
-    }
+      color: white;
+      width: 100%;
+      font-weight: 600;
+      font-size: 0.95rem;
 
-    cite {
-      font-family: $primary-font;
-      font-size: 1.125rem;
-      line-height: 1.5;
-      font-weight: 700;
-      color: black;
-      opacity: 0.3;
-      margin-bottom: 1.25rem;
+      a {
+        color: white;
+        padding-bottom: 1px;
+        text-decoration: none;
+        border-bottom: 1px solid #f1f1f1;
+      }
     }
   }
 
-  .wp-block-quote {
-    margin: 1.7rem 1rem;
-    border: 0.625rem solid $white-smoke;
-    font-size: 1.3em;
-    font-weight: bold;
-    line-height: 1.5;
-    color: #d93f7e;
-    padding: 1.5rem 1.2rem;
-    z-index: 1;
+  .wp-block-media-text {
+    @extend .row;
+    margin: 1rem 0;
+    border: 1px solid #f1f1f1;
 
-    p {
-      font-family: $primary-font;
-      font-size: 1.625rem;
-      line-height: 1.5;
-      font-weight: 700;
-      color: $primary-color;
-      margin-bottom: 1.25rem;
+    .wp-block-media-text__content {
+      @extend .col-sm-6;
+      order: 1;
+
+      p {
+        height: 100%;
+        margin: 0 auto;
+        padding: 3rem;
+        text-align: left;
+        font-family: $primary-font;
+        font-size: 1.5rem;
+        line-height: 1.7;
+        color: $cow-black;
+
+        a {
+          @extend .link-hover-class;
+          background-position: 0 1.9rem;
+          padding-bottom: 0.125rem;
+        }
+
+        @media screen and (max-width: $break-point-md) {
+          padding: 1rem;
+        }
+      }
     }
 
-    cite {
-      font-family: $primary-font;
-      font-size: 1.125rem;
-      line-height: 1.5;
-      font-weight: 700;
-      color: black;
-      opacity: 0.3;
-      margin-bottom: 1.25rem;
+    .wp-block-media-text__media {
+      @extend .col-sm-6;
+      order: 2;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
 }
+
 .blog-post-content {
   max-width: 790px;
   margin: 0 auto;
+}
+
+.size-full {
+  width: 100%;
+  height: auto;
+}
+
+.max-width-container {
+  max-width: 660px;
+  margin-left: auto;
+  margin-right: auto;
 }
 // short codes css will be here
 
