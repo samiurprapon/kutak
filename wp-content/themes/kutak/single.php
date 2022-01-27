@@ -52,7 +52,7 @@
 <main class="blog-post mb-xs-8">
   <div class="container mb-xs-6 main-content">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12 blog-post-content">
         <?php the_content(); ?>
       </div>
     </div>
@@ -85,15 +85,38 @@
     </div>
   </div>
 
-  
-
-
   <div class="join-newsletter-container">
-
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="join-newsletter">
+            <h6>Join our newsletter</h6>
+            <p>Enter your email to receive our newsletter.</p>
+            
+            <form action="">
+              <input type="email" placeholder="Your email address">
+              <button type="submit">Subscribe</button>
+              <div class="agree-terms">
+                <input type="checkbox" id="agree-terms">
+                <label for="agree-terms"> I have read and agree to the <a href="#">terms & conditions</a></label>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="ads-container">
-
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="ad">
+            AD
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="related-post-container smokey-background">
