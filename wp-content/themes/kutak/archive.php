@@ -70,14 +70,15 @@
 		<div id="posts" class="related-posts-container" data-offset="<?php echo $offset; ?>" data-total="<?php echo $total; ?>" data-category="<?php echo $current_category->term_id; ?>">
 			<div class="container">
 				<div id="allPosts" class="row">
-					<?php if ( $articles->have_posts() ): ?>
+					<?php if ( $articles->have_posts() ){ ?>
 						<?php while ( $articles->have_posts() ): $articles->the_post(); ?>
 							<div class="col-md-4">
 								<?php get_template_part( 'modules/article-card' ); ?>
 							</div>
 						<?php endwhile; ?>
-					<?php endif;?>
-					
+					<?php } else {?>
+							<p class="nothing-found">Sorry, but nothing matched your search terms. Please try again with some different keywords.</p>
+					<?php } ?>
 				</div>
 			</div>
 		</div>

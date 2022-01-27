@@ -5,7 +5,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-		padding: 2rem 0;
+    padding: 2rem 0;
     border-bottom: 1px solid #eee;
 
     .category-heading {
@@ -79,9 +79,19 @@
   }
 }
 
+.nothing-found {
+  padding-bottom: 1.875rem;
+  font-family: $primary-font;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: $cow-black;
+  line-height: 1.7;
+}
+
 .post-cards-container {
   padding-top: 1.875rem;
 }
+
 .load-more-container {
   padding-bottom: 1.875rem;
 }
