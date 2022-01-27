@@ -15,6 +15,7 @@
   <?php } else{ ?>
     <div class="header-background p-xs-1 white-background">
   <?php } ?>
+
     <nav class="nav">
       <div class="container">
         <div class="row">
@@ -36,17 +37,7 @@
       <section class="search-section">
         <div class="container">
           <div class="row">
-            <form class="search-form" action="">
-              <input
-                type="text"
-                name="query"
-                id="search"
-                placeholder="Search.."
-              />
-              <button type="submit">
-                <span class="fas fa-search"></span>
-              </button>
-            </form>
+            <?php get_search_form(); ?>
           </div>
         </div>
       </section>

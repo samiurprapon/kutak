@@ -5,8 +5,13 @@
 	$current_category = get_queried_object();
 	$offset = 6;
 
+	if( is_search() ){
+		$term_args = [
+			's' => get_search_query(),
+		];
+	}
 	// condition for category archive
-	if ( is_category() ) {
+	elseif ( is_category() ) {
 		$term_args = [
 			'cat' => $current_category->term_id,
 		];
@@ -16,8 +21,6 @@
 			'tag_id' => $current_category->term_id,
 		];
 	}
-
-	// print_r ( $term_args );
 
 	$args = array_merge( $term_args, [
 		'posts_per_page' => $offset,
@@ -36,10 +39,18 @@
 					<div class="title-bar">
 						<div class="category-heading">
 							<div class="category-title">
-								<span><i class="fas fa-circle-notch"></i>CATEGORY</span>
+								<?php if( is_search() ): ?>
+									<span><i class="fas fa-circle-notch"></i>SEARCH RESULTS FOR</span>
+								<?php else: ?>
+									<span><i class="fas fa-circle-notch"></i>CATEGORY</span>
+								<?php endif; ?>
 							</div>
 							<h1 class="category-title-text">
-								<?php echo $current_category->name; ?>
+								<?php if( is_search() ){
+									echo get_search_query();
+								} else {
+									echo $current_category->name;
+								} ?>
 							</h1>
 							<div class="category-description">
 								<p><?php echo $current_category->description; ?></p>
