@@ -12,7 +12,7 @@
   $author_id = $post->post_author;
 ?>
 
-<div class="post-banner mb-xs-4">
+<div class="article-heading mb-xs-4">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-md-6">
@@ -50,15 +50,21 @@
 </div>
 
 <main class="blog-post mb-xs-8">
-  <div class="container mb-xs-6 main-content">
+  <div class="container mb-xs-6">
     <div class="row">
-      <div class="col-md-12 blog-post-content">
+      <div class="col-md-12 blog-post-body blog-post-content">
         <?php the_content(); ?>
       </div>
     </div>
   </div>
   <div class="container">
     <div class="row">
+      <div class="col-md-12">
+        <div class="social-share-container">
+          <h6>Share with friends</h6>
+            <?php  get_template_part( 'framework/share' ); ?>
+        </div>
+      </div>
       <div class="col-md-12">
         <?php $tags = get_the_tag_list(); ?>
         <?php if ($tags) { ?>
@@ -86,7 +92,6 @@
   </div>
 
   <div class="join-newsletter-container">
-    <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="join-newsletter">
@@ -104,7 +109,6 @@
           </div>
         </div>
       </div>
-    </div>
   </div>
 
   <div class="ads-container">
