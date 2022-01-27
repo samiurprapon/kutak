@@ -3,13 +3,13 @@
 }
 
 .nav {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  right: 0;
   width: 100%;
   align-items: center;
   z-index: 4;
+  transition: all 0.3s linear;
 
   .row {
     justify-content: center;

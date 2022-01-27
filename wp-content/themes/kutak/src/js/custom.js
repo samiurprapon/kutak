@@ -18,7 +18,27 @@ const jQuery = require("jquery");
 const devMode = process.env.NODE_ENV !== "production";
 
 (function ($) {
+  $window = $(window);
+  $window.scroll(function () {
+    $scroll_position = $window.scrollTop();
+    if ($scroll_position > 30) {
+      // if body is scrolled down by 300 pixels
+      $(".nav").addClass("white-background");
+    }
+
+    if ($scroll_position <= 30) {
+      if ( $(".nav").hasClass("search-active") || $(".nav").hasClass("hamburger-active") ) {
+        // do nothing
+      } else {
+        $(".nav").removeClass("white-background");
+      }
+    }
+  });
+
   $("body").on("click", "#hamburger-menu", function () {
+    $scroll_position = $window.scrollTop();
+    $scrlled = $scroll_position > 30 ? true : false;
+
     if ($("nav").hasClass("search-active")) {
       $("nav").removeClass("search-active");
     }
