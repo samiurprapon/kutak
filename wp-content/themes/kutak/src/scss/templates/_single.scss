@@ -169,6 +169,31 @@
     }
   }
 
+  .has-drop-cap {
+    text-indent: 0;
+    font-size: 1.25rem;
+    font-weight: 1.7;
+    font-weight: 400;
+
+    font-family: $primary-font;
+    text-align: justify;
+
+    // make first letter of paragraph a drop cap
+    &:first-letter {
+      float: left;
+      // display: inline-block;
+      font-family: $primary-font;
+      font-weight: 600;
+      font-size: 4rem;
+      line-height: 1;
+      margin-top: -0.25rem;
+      margin-right: 0.5rem;
+      // font-size: 200%;
+      // line-height: 100%;
+      color: $eel-black;
+    }
+  }
+
   .main-content {
     a {
       @extend .link-hover-class;
