@@ -123,6 +123,12 @@
     @extend .max-width-container;
     margin-bottom: 1rem;
     color: $cow-black;
+
+    a {
+      @extend .link-hover-class;
+      // background-position: 0 1.9rem;
+      padding-bottom: 0.125rem;
+    }
   }
   .wp-block-image {
     margin-bottom: 1rem;
@@ -132,7 +138,10 @@
       width: 100%;
       height: auto;
       object-fit: cover;
+      border-radius: 0 0.125rem 0 0.125rem;
+      opacity: 0.99;
     }
+
     figcaption {
       position: absolute;
       bottom: 0;
@@ -199,6 +208,139 @@
       }
     }
   }
+
+  h2 {
+    @extend .max-width-container;
+    font-family: $primary-font;
+    font-size: 2.125rem;
+    font-weight: 600;
+    line-height: 1.1;
+    margin-top: 1.75rem;
+  }
+
+  h3 {
+    @extend .max-width-container;
+    font-family: $primary-font;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.1;
+    margin-top: 1.75rem;
+  }
+
+  ul {
+    @extend .max-width-container;
+    margin-top: 1.7rem;
+    margin-bottom: 1.7rem;
+    padding-left: 1.5rem;
+    list-style-type: disc;
+    font-family: $primary-font;
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: $cow-black;
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  ol {
+    @extend .max-width-container;
+    margin-top: 1.7rem;
+    margin-bottom: 1.7rem;
+    font-family: $primary-font;
+    list-style: none;
+
+    li {
+      position: relative;
+      padding-left: 2.8125rem;
+      margin: 1rem 0;
+      font-family: $primary-font;
+      font-size: 1.25rem;
+      font-weight: 400;
+      line-height: 1.7;
+      color: $cow-black;
+      counter-increment: list;
+
+      &:before {
+        content: counter(list);
+        position: absolute;
+        top: 0.15rem;
+        left: 0;
+        width: 1.875rem;
+        height: 1.875rem;
+        border: 2px solid $mercury;
+        border-radius: 1.875rem;
+        text-align: center;
+        line-height: 26px;
+        font-family: $primary-font;
+        font-weight: 600;
+        font-size: 1.25rem;
+      }
+
+      strong {
+        font-weight: 700;
+      }
+    }
+
+    @media screen and (min-width: $break-point-md) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .wp-block-quote {
+    margin: 1.7rem auto;
+    border: 0.625rem solid $white-smoke;
+    font-size: 1.3em;
+    font-weight: bold;
+    line-height: 1.5;
+    color: #d93f7e;
+    padding: 1.5rem 2.5rem;
+    z-index: 1;
+
+    p {
+      @extend .blog-post-content;
+      font-family: $primary-font;
+      font-size: 1.625rem;
+      line-height: 1.5;
+      font-weight: 700;
+      color: $primary-color;
+      margin-bottom: 1.25rem;
+    }
+
+    cite {
+      font-family: $primary-font;
+      font-size: 1.125rem;
+      line-height: 1.5;
+      font-weight: 700;
+      color: black;
+      opacity: 0.3;
+      margin-bottom: 1.25rem;
+      margin-left: auto;
+    }
+  }
+
+  .wp-block-separator {
+    margin-top: 1rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .is-style-dots {
+    height: auto;
+    line-height: 1;
+    text-align: center;
+    background: none;
+    border: none;
+    max-width: none;
+
+    &::before {
+      content: "\00b7 \00b7 \00b7";
+      color: $cow-black;
+      font-size: 3rem;
+      font-weight: 600;
+      letter-spacing: 1rem;
+    }
+  }
 }
 
 .blog-post-content {
@@ -220,6 +362,7 @@
 
 // blogpost utils
 .tag-container {
+  @extend .max-width-container;
   h6 {
     font-family: $primary-font;
     font-size: 1rem;
@@ -254,6 +397,8 @@
 }
 
 .author-container {
+  @extend .max-width-container;
+
   margin-top: 1.5rem;
   display: flex;
 
@@ -300,6 +445,8 @@
 }
 
 .join-newsletter-container {
+  @extend .max-width-container;
+  
   .join-newsletter {
     margin: 1.7rem 1rem;
     border: 0.625rem solid $white-smoke;
@@ -422,6 +569,7 @@
 }
 
 .ads-container {
+  @extend .max-width-container;
   margin-top: 1rem;
   margin-bottom: 2rem;
 
