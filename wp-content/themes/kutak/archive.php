@@ -1,14 +1,28 @@
 <?php get_header(); ?>
 
+
 <?php
 	$current_category = get_queried_object();
 	$offset = 6;
 
-	$args = array(
+	// condition for category archive
+	if ( is_category() ) {
+		$term_args = [
+			'cat' => $current_category->term_id,
+		];
+	} // condition for tag archive
+	elseif ( is_tag() ) {
+		$term_args = [
+			'tag_id' => $current_category->term_id,
+		];
+	}
+
+	// print_r ( $term_args );
+
+	$args = array_merge( $term_args, [
 		'posts_per_page' => $offset,
-		'cat' => $current_category->term_id,
 		'post_status' => 'publish'
-	);
+	]);
 	
 	$articles = new WP_Query( $args );
   $total  = $articles->found_posts;

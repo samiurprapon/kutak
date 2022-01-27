@@ -42,7 +42,7 @@
     <h2><span><i class="far fa-chart-bar"></i></span>Filter our Articles</h2>
     
 		<div class="container">
-		<div class="filter-options">
+			<div class="filter-options">
 				<?php 
 					$categories = get_categories( array(
 						'orderby' => 'name',
@@ -50,9 +50,9 @@
 						) 
 					);
 				?>
-
+					
 				<div class="dropdown dropdown-menu-1" <?php if( is_category() ) { echo 'style="display: none;"'; } ?>>
-					<div class="col-md-6">
+					<div class="col-md-6 dropdown-parent">
 						<div class="items">
 							<span class="item-name" data-name="<?php if( is_category() ) { echo get_queried_object()->slug; } ?>">Category</span>
 						</div>
@@ -66,16 +66,16 @@
 
 				<div class="dropdown dropdown-menu-2">
 					<?php $tags = get_tags(); ?>
-					<div class="col-md-6">
-						<div class="items">
-							<span class="item-name" data-name="<?php if( is_tag() ) { echo get_queried_object()->slug; } ?>">Topics</span>
+					<div class="col-md-6 dropdown-parent">
+							<div class="items">
+								<span class="item-name" data-name="<?php if( is_tag() ) { echo get_queried_object()->slug; } ?>">Topics</span>
+							</div>
+							<ul <?php if( is_tag() ) { echo 'style="display: none;"'; } ?>>
+								<?php foreach ( $tags as $tag ) { ?>
+									<li data-name="<?php echo $tag->name; ?>"><?php echo $tag->name; ?></li>
+								<?php } ?>
+							</ul>
 						</div>
-						<ul <?php if( is_tag() ) { echo 'style="display: none;"'; } ?>>
-							<?php foreach ( $tags as $tag ) { ?>
-								<li data-name="<?php echo $tag->name; ?>"><?php echo $tag->name; ?></li>
-							<?php } ?>
-						</ul>
-					</div>
 				</div>
 			</div>
 		</div>
