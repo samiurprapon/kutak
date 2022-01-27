@@ -98,14 +98,15 @@
             <h6>Join our newsletter</h6>
             <p>Enter your email to receive our newsletter.</p>
             
-            <form action="">
-              <input type="email" placeholder="Your email address">
-              <button type="submit">Subscribe</button>
+            <form id="newsletter" method="POST" >
+              <input id="subscribe-email" type="email" placeholder="Your email address">
+              <button id="subscribe-form" type="submit">Subscribe</button>
               <div class="agree-terms">
-                <input type="checkbox" id="agree-terms">
+                <input type="checkbox" id="subscribe-agreement">
                 <label for="agree-terms"> I have read and agree to the <a href="#">terms & conditions</a></label>
               </div>
             </form>
+            <div id="subscribe-result"></div>
           </div>
         </div>
       </div>

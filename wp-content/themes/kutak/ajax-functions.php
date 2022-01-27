@@ -24,6 +24,11 @@ wp_localize_script( 'bundle', 'surge', [
 	// 
 	'surge_filtered_content'    => wp_create_nonce( 'surge_filtered_content' ),
 
+	'surge_subscribe_nonce' => wp_create_nonce( 'surge_subscribe_nonce' ),
+
+	//
+	'surge_contact_nonce' => wp_create_nonce( 'surge_contact_nonce' ),
+
 ] );
 
 
@@ -411,3 +416,91 @@ if ( ! function_exists( 'get_filtered_wp_query' ) ) {
 		return $posts;
 	}
 }
+
+/**
+ * Newsletter Form Submission
+ */
+if ( ! function_exists( 'surge_subscribe' ) ) {
+	function surge_subscribe() {
+		check_ajax_referer( 'surge_subscribe_nonce', 'security' );
+
+		//get the email
+		$email = $_REQUEST['email'];
+
+		// call mail server to send the email
+		$mail_sent = wp_mail( $email, 'Surge Newsletter', 'You have been subscribed to the Surge Newsletter' );
+
+		// //return the response
+		// if ( $mail_sent ) {
+		// 	wp_send_json( [
+		// 		'success' => true,
+		// 		'message' => 'You have been subscribed to the Surge Newsletter'
+		// 	] );
+		// } else {
+		// 	wp_send_json( [
+		// 		'success' => false,
+		// 		'message' => 'There was an error subscribing you to the Surge Newsletter'
+		// 	] );
+		// }
+
+		if ( !$email ) {
+			wp_send_json( [
+				'success' => false,
+				'message' => 'Please enter a valid email address'
+			] );
+		} else {
+			wp_send_json( [
+				'success' => true,
+				'message' => 'You have been subscribed to the Surge Newsletter'
+			] );
+		}
+
+		wp_die();
+	}
+
+	add_action( 'wp_ajax_SURGE_SUBSCRIBE', 'surge_subscribe' );
+	add_action( 'wp_ajax_nopriv_SURGE_SUBSCRIBE', 'surge_subscribe' );
+}
+
+if ( ! function_exists( 'surge_contact' )) {
+	function surge_contact() {
+		check_ajax_referer( 'surge_contact_nonce', 'security' );
+
+		// get form data
+		$name = $_REQUEST['name'];
+		$email = $_REQUEST['email'];
+		$subject = $_REQUEST['subject'];
+		$message = $_REQUEST['message'];
+
+		// send email
+		// $mail_sent = wp_mail( $email, $subject, $message );
+
+		// return response
+		// if ( $mail_sent ) {
+		// 	wp_send_json( [
+		// 		'success' => true,
+		// 		'message' => 'Your message has been sent'
+		// 	] );
+		// } else {
+		// 	wp_send_json( [
+		// 		'success' => false,
+		// 		'message' => 'There was an error sending your message'
+		// 	] );
+		// }
+
+		if ( !$name || !$email || !$subject || !$message ) {
+			wp_send_json( [
+				'success' => false,
+				'message' => 'Please fill out all the fields'
+			] );
+		} else {
+			wp_send_json( [
+				'success' => true,
+				'message' => 'Your message has been sent'
+			] );
+		}
+	}
+}
+
+add_action( 'wp_ajax_SURGE_CONTACT', 'surge_contact' );
+add_action( 'wp_ajax_nopriv_SURGE_CONTACT', 'surge_contact' );

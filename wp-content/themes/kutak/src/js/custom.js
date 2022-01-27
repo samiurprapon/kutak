@@ -27,7 +27,10 @@ const devMode = process.env.NODE_ENV !== "production";
     }
 
     if ($scroll_position <= 30) {
-      if ( $(".nav").hasClass("search-active") || $(".nav").hasClass("hamburger-active") ) {
+      if (
+        $(".nav").hasClass("search-active") ||
+        $(".nav").hasClass("hamburger-active")
+      ) {
         // do nothing
       } else {
         $(".nav").removeClass("white-background");
@@ -93,13 +96,17 @@ const devMode = process.env.NODE_ENV !== "production";
     }
   });
 
-      $('body').on('click', '#filter [class*=dropdown-] ul li', function () {
-        $(this).parent().parent().find('.items .item-name').text($(this).text());
-        $(this).parent().parent().find('.items .item-name').data('name', $(this).data('name'));
-        //hide after change
-        $('#filter ul').hide();
-        filterFlag = true;
-    });
+  $("body").on("click", "#filter [class*=dropdown-] ul li", function () {
+    $(this).parent().parent().find(".items .item-name").text($(this).text());
+    $(this)
+      .parent()
+      .parent()
+      .find(".items .item-name")
+      .data("name", $(this).data("name"));
+    //hide after change
+    $("#filter ul").hide();
+    filterFlag = true;
+  });
 
   $("body").on("click", "#filter [class*=dropdown-menu] ul", function () {
     //post data object
@@ -248,6 +255,76 @@ const devMode = process.env.NODE_ENV !== "production";
       }
 
       $(document).scrollTop(scrollFromTop);
+    });
+  });
+
+  $("body").on("click", "#subscribe-form", function (e) {
+    e.preventDefault();
+
+    let email = $("#subscribe-email").val();
+    let agreement = $("#subscribe-agreement").is(":checked");
+
+    if (!agreement) {
+      $("#subscribe-agreement").addClass("error");
+      return;
+    }
+
+    let postData = {
+      action: "SURGE_SUBSCRIBE",
+      email: email,
+      security: surge.surge_subscribe_nonce,
+    };
+
+    // post the data to admin-ajax.php file
+    $.post(surge.ajax_url, postData, function (response) {
+      console.log(response);
+
+      if (response.success) {
+        // print success message
+        $("#newsletter").hide();
+        $("#subscribe-result").html(response.message);
+        $("#subscribe-result").show();
+      } else {
+        // print error message
+        $("#subscribe-result").html(response.message);
+        $("#subscribe-result").show();
+      }
+    });
+  });
+
+  $("body").on("click", "#contact-form-submit", function (e) {
+    e.preventDefault();
+
+    let name = $("#contact-name").val();
+    let email = $("#contact-email").val();
+    let subject = $("#contact-subject").val();
+    let message = $("#contact-message").val();
+
+    console.log("name", name);
+    console.log("email", email);
+    console.log("subject", subject);
+    console.log("message", message);
+
+    var postData = {
+      action: "SURGE_CONTACT",
+      name: name,
+      email: email,
+      subject: subject,
+      message: message,
+      security: surge.surge_contact_nonce,
+    };
+
+    // post the data to admin-ajax.php file
+    $.post(surge.ajax_url, postData, function (response) {
+      // console.log(response);
+
+      if (response.success) {
+        $(".message-info").html(response.message);
+        $(".message-info").show();
+      } else {
+        $(".message-info").html(response.message);
+        $(".message-info").show();
+      }
     });
   });
 })(jQuery);

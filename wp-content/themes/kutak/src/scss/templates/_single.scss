@@ -684,6 +684,18 @@
         }
       }
     }
+
+    #subscribe-result {
+      display: none;
+      font-family: $primary-font;
+      font-size: 1.5rem;
+      font-weight: bold;
+      line-height: 1.5;
+      text-align: center;
+      color: $primary-color;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
   }
 }
 

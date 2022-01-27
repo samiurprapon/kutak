@@ -135,6 +135,23 @@ if ( ! function_exists( 'surge_custom_sender_email' ) ) {
 
 add_filter( 'wp_mail_from', 'surge_custom_sender_email' );
 
+/** 
+ * Add SMTP details for wp_mail
+ */
+
+function send_smtp_email( $phpmailer ) {
+    $phpmailer->isSMTP();
+    $phpmailer->Host = 'mail.github.engineer';
+    $phpmailer->Port = '587';
+    $phpmailer->SMTPSecure = 'tls';
+    $phpmailer->SMTPAuth = true;
+    $phpmailer->Username = 'support';
+    $phpmailer->Password = '12345678';
+    $phpmailer->From = 'suport@github.engineer';
+    $phpmailer->FromName = 'Support';
+}
+add_action( 'phpmailer_init', 'send_smtp_email' );
+
 
 //define filtered category
 define( 'FILTER_CATEGORY', [

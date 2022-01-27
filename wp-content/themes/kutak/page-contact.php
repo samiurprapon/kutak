@@ -14,37 +14,37 @@
           <li>Which of us ever undertakes laborious physical exercise</li>
           <li>Except to obtain some advantage from it</li>
         </ul>
-        <form class="contact-form" action="/" method="post">
+        <form class="contact-form">
           <p>
             <label> Your Name (required)<br>
               <span class="your-name">
-              	<input type="text" name="your-name" size="40">
+              	<input type="text" name="your-name" id="#contact-name" size="40">
               </span> 
             </label>
           </p>
           <p>
             <label> Your Email (required)<br>
               <span class="your-email">
-                <input type="email" name="your-email" size="40" >
+                <input type="email" name="your-email" id="#contact-email" size="40" >
               </span>
             </label>
           </p>
           <p>
             <label> Subject<br>
               <span class="your-subject">
-                <input type="text" name="your-subject" size="40" aria-invalid="false">
+                <input type="text" name="your-subject" id="#contact-subject" size="40" aria-invalid="false">
               </span>
             </label>
           </p>
 					<p>
 						<label> Your Message<br>
 							<span class="your-message">
-								<textarea name="your-message"></textarea>
+								<textarea name="your-message" id="#contact-message" ></textarea>
 							</span>
 						</label>
 					</p>
 					<p>
-						<input type="submit" value="Send">
+						<input type="submit" id="contact-form-submit" value="Send">
 						<span class="spinner"></span>
 					</p>
 					<div class="message-info" aria-hidden="true">Test Response</div>
